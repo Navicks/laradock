@@ -202,7 +202,8 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; then \
 # Copy xdebug configuration for remote debugging
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
-RUN mkdir /var/log/xdebug && chown 1000:1000 /var/log/xdebug && chmod 775 /var/log/xdebug
+#RUN mkdir /var/log/xdebug && chown 1000:1000 /var/log/xdebug && chmod 775 /var/log/xdebug
+RUN mkdir /var/log/xdebug && chmod 777 /var/log/xdebug
 
 RUN sed -i "s/xdebug.remote_autostart=0/xdebug.remote_autostart=1/" /usr/local/etc/php/conf.d/xdebug.ini && \
     sed -i "s/xdebug.remote_enable=0/xdebug.remote_enable=1/" /usr/local/etc/php/conf.d/xdebug.ini && \

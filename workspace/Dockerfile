@@ -358,7 +358,8 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; then \
 # ADD for REMOTE debugging
 COPY ./xdebug.ini /etc/php/${LARADOCK_PHP_VERSION}/cli/conf.d/xdebug.ini
 
-RUN mkdir /var/log/xdebug && chown laradock:docker_env /var/log/xdebug && chmod 775 /var/log/xdebug
+#RUN mkdir /var/log/xdebug && chown laradock:docker_env /var/log/xdebug && chmod 775 /var/log/xdebug
+RUN mkdir /var/log/xdebug && chmod 777 /var/log/xdebug
 
 RUN sed -i "s/xdebug.remote_autostart=0/xdebug.remote_autostart=1/" /etc/php/${LARADOCK_PHP_VERSION}/cli/conf.d/xdebug.ini && \
     sed -i "s/xdebug.remote_enable=0/xdebug.remote_enable=1/" /etc/php/${LARADOCK_PHP_VERSION}/cli/conf.d/xdebug.ini && \
